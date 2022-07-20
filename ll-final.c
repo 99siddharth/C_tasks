@@ -34,7 +34,7 @@ void insertAtFront()
     int data;
     struct node* temp;
     temp = malloc(sizeof(struct node));
-    printf("\nEnter number to be inserted : ");
+    printf("Enter number to be inserted : ");
     scanf("%d", &data);
     temp->info = data;
   
@@ -51,7 +51,7 @@ void insertAtEnd()
     temp = malloc(sizeof(struct node));
   
     // Enter the number
-    printf("\nEnter number to be inserted : ");
+    printf("Enter number to be inserted : ");
     scanf("%d", &data);
   
     // Changes links
@@ -72,10 +72,14 @@ void insertAtPosition(int count)
     newnode = malloc(sizeof(struct node));
   
     // Enter the position and data
-    printf("\nEnter position and data :");
-    scanf("%d %d", &pos, &data);
-    if(pos<=count){
+    printf("Enter position :");
+    scanf("%d", &pos);
+    if(pos==1)
+	insertAtFront();
+    else if(pos<=count){
     // Change Links
+    printf("\nEnter the number to be inserted:");
+    scanf("%d",&data);
     temp = start;
     newnode->info = data;
     newnode->link = 0;
@@ -95,7 +99,7 @@ void deleteFirst()
 {
     struct node* temp;
     if (start == NULL)
-        printf("\nList is empty\n");
+        printf("List is empty\n");
     else {
         temp = start;
         start = start->link;
@@ -108,7 +112,7 @@ void deleteEnd()
 {
     struct node *temp, *prevnode;
     if (start == NULL)
-        printf("\nList is Empty\n");
+        printf("List is Empty\n");
     else {
         temp = start;
         while (temp->link != 0) {
@@ -128,7 +132,7 @@ void deletePosition(int count)
   
     // If LL is empty
     if (start == NULL)
-        printf("\nList is empty\n");
+        printf("List is empty\n");
   
     // Otherwise
     else {
@@ -136,7 +140,9 @@ void deletePosition(int count)
   
         // Position to be deleted
         scanf("%d", &pos);
-	if(pos<=count){
+	if(pos==1)
+		deleteFirst();
+	else if(pos<=count){
         position = malloc(sizeof(struct node));
         temp = start;
   
@@ -209,12 +215,12 @@ int main()
         printf("6  For deletion of last element\n");
         printf("7  For deletion of element at any position\n");
         printf("8  To sort element\n");
-        printf("9  To exit");
- 
+        printf("9  To exit\n");
+ 	printf("\n"); 
     while (1) {
        printf("\nEnter Choice :");
         scanf("%d", &choice);
-  
+ 	printf("\n"); 
         switch (choice) {
         case 1:
 	    {
